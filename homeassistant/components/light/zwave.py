@@ -51,7 +51,7 @@ def get_device(node, values, node_config, **kwargs):
                   " CONF_REFRESH_DELAY=%s", node.node_id,
                   values.primary.value_id, node_config, refresh, delay)
 
-    if node.has_command_class(zwave.const.COMMAND_CLASS_SWITCH_COLOR):
+    if node.has_command_class(zwave.const.COMMAND_CLASS_SWITCH_COLOR) or node.has_command_class(zwave.const.COMMAND_CLASS_SWITCH_MULTILEVEL):
         return ZwaveColorLight(values, refresh, delay)
     return ZwaveDimmer(values, refresh, delay)
 
